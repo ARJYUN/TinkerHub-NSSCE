@@ -7,6 +7,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link href="./style.css" rel="stylesheet">
+    <script src="app.js"></script>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -86,11 +87,12 @@
         </div>
         </section>
         
-          
+    </div>     
 
         <!-- Announcements Section -->
         <section class="section" id="announcements">
             <div class="container">
+                <section class="hidden">
                 <h2 class="section-title">Latest Announcements</h2>
                 <p class="section-subtitle">Stay updated with the latest news and announcements from our community 📢</p>
                 <div class="grid">
@@ -129,6 +131,8 @@
                 </div>
             </div>
         </section>
+    </section>
+
 
         <!-- Events Section -->
         <section class="section" id="events">
@@ -151,6 +155,7 @@
                     <p>"Talent you have naturally. Skills is only developed by hours and hours of week."</p> <br>
                     <p>- Usain Bolt</p>
                 </div>
+                <section class="hidden">
                 <h2 class="section-title">Events</h2>
                 <p class="section-subtitle">Join us for workshops, hackathons, webinars, and more 🎭 </p>
                 <div class="grid">
@@ -199,6 +204,7 @@
                 </div>
             </div>
         </section>
+    </section>
 
         <!-- Resources Section -->
         <section class="section" id="resources">
@@ -221,6 +227,7 @@
                     <p>"It is what we know already that often prevents us from learning."</p><br>
                     <p>- Claude Bernard</p>
                 </div>
+                <section class="hidden">
                 <h2 class="section-title">Learning Resources</h2>
                 <p class="section-subtitle">Expand your knowledge with our curated collection of learning materials 📚</p>
                 <div class="resources">
@@ -287,6 +294,7 @@
                 </div>
             </div>
         </section>
+    </section>
 
 
         <!-- Projects Section -->
@@ -310,6 +318,7 @@
                     <p>"Creativity is thinking up new things. Innovation is doing new things."</p><br>
                     <p>- Theodore Levitt</p>
                 </div>
+                <section class="hidden">
                 <h2 class="section-title">Projects</h2>
                 <p class="section-subtitle">Turning ideas into impact! 💡🚀 Our project session at TinkerHub NSSCE sparked innovation, collaboration, and creativity.</p>
                 
@@ -431,9 +440,9 @@
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
         <br>
-              
-            
     </section>
+</section>
+
         <script>
             let slideIndex = 1;
             showSlides(slideIndex);
@@ -485,6 +494,7 @@
                    <h2>!!!</h2><br>
                     <p>Leadership is not something you do to people. It's something you do with people. &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-Ken Blanchard</p>
                 </div>
+                <section class="hidden">
                 <h2 class="section-title">Our Team</h2>
                 <p class="section-subtitle">Meet the minds behind the mission! 🧠✨ The driving force of TinkerHub NSSCE — our passionate and unstoppable core team.</p>
                 <br>
@@ -569,6 +579,7 @@
                 </div>
             </div>
         </section>
+    </section>
 
 
         <!-- Forum Section -->
@@ -592,12 +603,13 @@
                         <p>"We are Stronger when we listen, and smarter when we share."</p><br>
                         <p>- Rania Al-Abdullah</p>
                     </div>
+                    <section class="hidden">
                 <h2 class="section-title">Community Forum</h2>
                 <p class="section-subtitle">Join discussions, ask questions, and share your knowledge with fellow community members</p>
                 <div class="forum">
                     <div class="forum-post">
                         <div class="post-header">
-                            <span class="post-author">Akhil Sharma</span>
+                            <span class="post-author">Swetha P</span>
                             <span class="post-time">2 days ago</span>
                         </div>
                         <div class="post-content">
@@ -606,7 +618,7 @@
                     </div>
                     <div class="forum-post">
                         <div class="post-header">
-                            <span class="post-author">Priya Thomas</span>
+                            <span class="post-author">Deekshith Sharma</span>
                             <span class="post-time">Yesterday</span>
                         </div>
                         <div class="post-content">
@@ -615,7 +627,7 @@
                     </div>
                     <div class="forum-post">
                         <div class="post-header">
-                            <span class="post-author">Arjun Menon</span>
+                            <span class="post-author">Arjun krishna</span>
                             <span class="post-time">2 hours ago</span>
                         </div>
                         <div class="post-content">
@@ -632,7 +644,8 @@
                 </div>
             </div>
         </section>
-    </div>
+    </section>
+    
 
     <!-- About Section -->
     <section class="section" id="about">
@@ -654,6 +667,7 @@
                <h2>!!!</h2><br>
                 <p>Leadership is not something you do to people. It's something you do with people. &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-Ken Blanchard</p>
             </div>
+            <section class="hidden">
             <h2 class="section-title">About Us</h2>
             <div class="about-content">
                 <div class="about-text">
@@ -668,7 +682,24 @@
             </div>
         </div>
     </section>
+</section>
     <script>
+
+const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                console.log(entry)
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                } else {
+                    entry.target.classList.remove('show');
+                }
+            });
+        });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+
+        
         function postForumMessage() {
         const message = document.getElementById("forumInput").value;
         if (message.trim()) {
@@ -679,14 +710,23 @@
     }
   }
   
-  function loadForum() {
+    function loadForum() {
     document.getElementById("forumMessages").innerHTML = "<p>No messages yet. Start the conversation!</p>";
-  }
+    }
     </script>
     <section class="foo" style="margin-bottom: 200px;">
         
     </section>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            });
+        });
+ 
 
         const pupils = document.querySelectorAll('.pupil');
         
@@ -730,6 +770,7 @@
         card3.addEventListener('mouseout', () => {
         card3.style.animationPlayState = 'running';
         });
+
         
 
     </script>

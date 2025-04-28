@@ -4,9 +4,7 @@
             --light: #f8f9fa;
             --dark: #212529;
             --success: #28a745;
-            --danger: #dc3545;
             --warning: #ffc107;
-            --info: #17a2b8;
         }
 
         * {
@@ -25,6 +23,30 @@
                     linear-gradient(to right, rgb(228, 226, 226) 1px, transparent 1px),
                     linear-gradient(to bottom, rgb(228, 226, 226) 1px, transparent 1px);
         }
+
+        .hidden{
+            display: grid;
+        }
+
+        .hidden{
+            opacity: 0;
+            filter: blur(3px);
+            transform: translateY(-10%);
+            transition: all 1.2s;
+        }
+        .show {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+
+        @media(prefers-reduced-motion){
+            .hidden{
+                transition: none;
+            }
+        }
+        
+
 
         .container {
             width: 100%;
