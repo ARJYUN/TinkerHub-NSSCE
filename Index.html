@@ -3,798 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NSSCE TinkerHub Campus Community</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
-    <link href="./style.css" rel="stylesheet">
-    <script src="app.js"></script>
+    <title>Login Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url(./Assets/loginbg.jpg) center/cover;
+            overflow: hidden;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            backdrop-filter: blur(10px);
+        }
+
+        .container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 28px;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+
+        .tabs button {
+            background: none;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+
+        .tabs button.active {
+            color: #6b48ff;
+            border-bottom: 2px solid #6b48ff;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #6b48ff;
+            box-shadow: 0 0 5px rgba(107, 72, 255, 0.3);
+        }
+
+        .form-group label {
+            position: absolute;
+            left: 12px;
+            top: 12px;
+            color: #999;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .form-group input:focus + label,
+        .form-group input:not(:placeholder-shown) + label {
+            top: -10px;
+            font-size: 12px;
+            color: #6b48ff;
+            background: #fff;
+            padding: 0 5px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background: #6b48ff;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background: #5a3de6;
+        }
+
+        .error {
+            color: #ff3333;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
+
+        
+
+        
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <div class="logo">
-                <img src="./Assets/tinkerhubnssce_logo.jpg" alt="TinkerHub Logo" style="cursor: pointer;">
-                
-            </div>
-            <div class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#events">Events</a></li>
-                <li><a href="#resources">Resources</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="#forum">Forum</a></li>
-                <li><a href="#about">About</a></li>
-            </ul>
-            <div class="auth-buttons">
-                <a href="#" id="loginBtn">Login</a>
-            </div>
+
+    <div class="container">
+        <h2>Welcome Back</h2>
+        <div class="tabs">
+            <button class="tab active" onclick="showForm('student')">Student Login</button>
+            <button class="tab" onclick="showForm('admin')">Admin Login</button>
         </div>
-    </nav>
 
-    <!-- Main Content -->
-    <div id="mainContent">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="flower1">
-                <div class="petal-layer1"></div>
-                <div class="face1">
-                  <div class="eye left-eye">
-                    <div class="pupil"></div>
-                  </div>
-                  <div class="eye right-eye">
-                    <div class="pupil"></div>
-                  </div>
-                  <div class="mouth"></div>
-                </div>
-              </div>
-              <div class="flower2">
-                <div class="petal-layer2"></div>
-                <div class="face2">
-                  <div class="eye left-eye">
-                    <div class="pupil"></div>
-                  </div>
-                  <div class="eye right-eye">
-                    <div class="pupil"></div>
-                  </div>
-                  <div class="mouth"></div>
-                </div>
-              </div>
-
-            <div class="ocard1" id="ocard1">
-               <h2>Welcome!</h2>
-               <blockquote>
-                <p>298 Makers</p><br>
-                <p>13 Activities</p><br>
-                <p>45 Projects</p>
-            </blockquote>
+        <div id="student-form">
+            <div class="form-group">
+                <input type="text" id="student-username" placeholder=" " required>
+                <label for="student-username">Username</label>
             </div>
-            <div class="ocard2" id="ocard2">
-                <img src="./Assets/quote.png">
-             </div>
-            <div class="container">
-                <h1>Welcome to NSSCE TinkerHub Campus Community
-                </h1>
-                <p>A vibrant community of tech enthusiasts, innovators, and problem solvers at NSS College of Engineering, Akathethara</p>
-                <a href="https://app.tinkerhub.org/project/633?_gl=1*1b447fn*_ga*OTgwMTE5MDAzLjE3NDU2NDM2MTg.*_ga_5F3S36SL83*MTc0NTY4NzI3OC42LjEuMTc0NTY4NzQwMC4wLjAuMA..*_ga_T7HYLS1ZNZ*MTc0NTY4NzI3OC42LjEuMTc0NTY4NzQwMC4wLjAuMA..*_ga_XF38NC19X7*MTc0NTY4NzI3OC42LjEuMTc0NTY4NzQwMC4wLjAuMA.." target="_blank" class="hero-btn">Join Our Community</a><br><br>
+            <div class="form-group">
+                <input type="password" id="student-password" placeholder=" " required>
+                <label for="student-password">Password</label>
             </div>
-        </section>
-        <section class="scro">
-        <div class="scrolling">
-            <marquee behaviour="scroll" direction="left">⟡ coding is a superpower ⟡ don’t fly solo ⟡ be kind ⟡ skills pay the bills ⟡ coding is a superpower ⟡ don’t fly solo ⟡ be kind ⟡ skills pay the bills ⟡ coding is a superpower ⟡ don’t fly solo ⟡ be kind ⟡ skills pay the bills ⟡ coding is a superpower ⟡ don’t fly solo ⟡ be kind ⟡ skills pay the bills⟡ coding is a superpower ⟡ don’t fly solo ⟡ be kind ⟡ skills pay the bills ⟡ coding is a superpower ⟡ don’t fly solo ⟡ be kind ⟡ skills pay the bills ⟡ coding is a superpower ⟡ don’t fly solo ⟡ be kind ⟡ skills pay the bills ⟡ coding is a superpower ⟡ don’t fly solo ⟡ be kind ⟡ skills pay the bills⟡ coding is a superpower ⟡ don’t fly solo ⟡ be kind ⟡ skills pay the bills ⟡ coding is a superpower ⟡ don’t fly solo ⟡ be kind ⟡ skills pay the bills ⟡ coding is a superpower ⟡ don’t fly solo ⟡ be kind ⟡ skills pay the bills ⟡ coding is a superpower ⟡ don’t fly solo ⟡ be kind ⟡ skills pay the bills⟡ coding is a superpower ⟡ don’t fly solo ⟡ be kind ⟡ skills pay the bills ⟡ coding is a superpower ⟡ don’t fly solo ⟡ be kind ⟡ skills pay the bills ⟡ coding is a superpower ⟡ don’t fly solo ⟡ be kind ⟡ skills pay the bills ⟡ coding is a superpower ⟡ don’t fly solo ⟡ be kind ⟡ skills pay the bills
-            </marquee>
+            <button type="submit" onclick="login('student')">Login</button>
+            <p class="error" id="student-error">Invalid username or password</p>
         </div>
-        </section>
-        
-    </div>     
 
-        <!-- Announcements Section -->
-        <section class="section" id="announcements">
-            <div class="container">
-                <section class="hidden">
-                <h2 class="section-title">Latest Announcements</h2>
-                <p class="section-subtitle">Stay updated with the latest news and announcements from our community 📢</p>
-                <div class="grid">
-                    <div class="card">
-                        <img src="./Assets/New learning resources.png" alt="Announcement Image" class="card-img">
-                        <div class="card-content">
-                            <h3 class="card-title">New Learning Resources Available</h3>
-                            <p class="card-text">We've added new learning paths for web development, python, and arduino. Check them out in the resources section!</p>
-                        </div>
-                        <div class="card-footer">
-                            <span class="card-date">April 23, 2025</span>
-                            <a href="#resources" class="card-link">Read More</a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="./Assets/hackathon.png" alt="Announcement Image" class="card-img">
-                        <div class="card-content">
-                            <h3 class="card-title">Upcoming Hackathon</h3>
-                            <p class="card-text">Get ready for our annual 24-hour hackathon! This year's theme is 'Tech for Sustainable Development'.</p>
-                        </div>
-                        <div class="card-footer">
-                            <span class="card-date">April 20, 2025</span>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="./Assets/community leaders.png" alt="Announcement Image" class="card-img">
-                        <div class="card-content">
-                            <h3 class="card-title">New Community Leaders</h3>
-                            <p class="card-text">Congratulations to our new batch of community leaders! They'll be guiding our activities for the upcoming academic year.</p>
-                        </div>
-                        <div class="card-footer">
-                            <span class="card-date">April 15, 2025</span>
-                            <a href="#team" class="card-link">Read More</a>
-                        </div>
-                    </div>
-                </div>
+        <div id="admin-form" style="display: none;">
+            <div class="form-group">
+                <input type="text" id="admin-username" placeholder=" " required>
+                <label for="admin-username">Username</label>
             </div>
-        </section>
-    </section>
-
-
-        <!-- Events Section -->
-        <section class="section" id="events">
-            <div class="container">
-                <div class="flower10">
-                    <div class="petal-layer10"></div>
-                    <div class="face10">
-                      <div class="eye left-eye">
-                        <div class="pupil"></div>
-                      </div>
-                      <div class="eye right-eye">
-                        <div class="pupil"></div>
-                      </div>
-                      <div class="mouth"></div>
-                    </div>
-                  </div>
-    
-                <div class="ocard7" id="ocard7">
-                   <h2>!!!</h2><br>
-                    <p>"Talent you have naturally. Skills is only developed by hours and hours of week."</p> <br>
-                    <p>- Usain Bolt</p>
-                </div>
-                <section class="hidden">
-                <h2 class="section-title">Events</h2>
-                <p class="section-subtitle">Join us for workshops, hackathons, webinars, and more 🎭 </p>
-                <div class="grid">
-                    <div class="card">
-                        <img src="./Assets/web fusion.jpg" alt="Event Image" class="card-img">
-                        <div class="card-content">
-                            <h3 class="card-title">Web Fusion</h3>
-                            <p class="card-text">Learn the basics of HTML, CSS, and JavaScript in this hands-on workshop. Bring your laptops!</p>
-                            <p><strong>Date:</strong> Apr 2, 2025</p>
-                            <p><strong>Time:</strong> 04:00 PM - 06:00 PM</p>
-                            <p><strong>Venue:</strong> IoT Lab</p>
-                        </div>
-                        <div class="card-footer">
-                            <span class="badge badge-ongoing">Ongoing</span>
-                            <a href="https://tinkerhub.org/events/Z4AA45QSVG/webfussion-3.o" target="_blank" class="card-link">Register Now</a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="./Assets/community connect.jpg" alt="Event Image" class="card-img">
-                        <div class="card-content">
-                            <h3 class="card-title">Community Connect 3.0</h3>
-                            <p class="card-text">Peer interactions, experience sharing, network expansion, exciting games, engaging activities, and a lot more are waiting for you.</p>
-                            <p><strong>Date:</strong> Feb 20, 2025</p>
-                            <p><strong>Time:</strong> 04:00 PM - 06:00 PM</p>
-                            <p><strong>Venue:</strong> College Auditorium</p>
-                        </div>
-                        <div class="card-footer">
-                            <span class="badge badge-upcoming">Ended</span>
-                            <a href="https://tinkerhub.org/events/0XVOZ0PWBW/Community%20Connect%203.O" class="card-link"style="color: orange;" target="_blank">About the event</a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="./Assets/git.png" alt="Event Image" class="card-img">
-                        <div class="card-content">
-                            <h3 class="card-title">Git Set Go</h3>
-                            <p class="card-text">The ultimate platform for developers to collaborate, manage code, and bring ideas to life! Work with teams, and contribute to the global developer community!</p>
-                            <p><strong>Date:</strong> Jan 23, 2025</p>
-                            <p><strong>Time:</strong> 04:10 PM - 05:30 PM</p>
-                            <p><strong>Venue:</strong> Skill Development Cell</p>
-                        </div>
-                        <div class="card-footer">
-                            <span class="badge badge-upcoming">Ended</span>
-                            <a href="https://tinkerhub.org/events/E1WXKGLIAX/Git%20Set%20Go" target="_blank" class="card-link" style="color: orange;">About the event</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="form-group">
+                <input type="password" id="admin-password" placeholder=" " required>
+                <label for="admin-password">Password</label>
             </div>
-        </section>
-    </section>
-
-        <!-- Resources Section -->
-        <section class="section" id="resources">
-            <div class="container">
-                <div class="flower9">
-                    <div class="petal-layer9"></div>
-                    <div class="face9">
-                      <div class="eye left-eye">
-                        <div class="pupil"></div>
-                      </div>
-                      <div class="eye right-eye">
-                        <div class="pupil"></div>
-                      </div>
-                      <div class="mouth"></div>
-                    </div>
-                  </div>
-    
-                <div class="ocard6" id="ocard6">
-                   <h4>!!!</h4><br>
-                    <p>"It is what we know already that often prevents us from learning."</p><br>
-                    <p>- Claude Bernard</p>
-                </div>
-                <section class="hidden">
-                <h2 class="section-title">Learning Resources</h2>
-                <p class="section-subtitle">Expand your knowledge with our curated collection of learning materials 📚</p>
-                <div class="resources">
-                    <div class="resource-item">
-                        <div class="resource-icon">
-                            <i class="fas fa-file-pdf"></i>
-                        </div>
-                        <div class="resource-info"><a href="./Assets/FullStack Development In 50 Days (MERN).pdf"target="_blank" style="text-decoration: none; color: black;">
-                            <h3 class="resource-title">Web Development Roadmap 2025</h3>
-                            <p class="resource-desc">A comprehensive guide to becoming a full-stack web developer</p>
-                        </div>
-                        <a href="./Assets/FullStack Development In 50 Days (MERN).pdf" target="_blank" class="resource-download">
-                            <i class="fas fa-download"></i>
-                        </a></a>
-                    </div>
-                    <div class="resource-item">
-                        <div class="resource-icon">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <div class="resource-info"><a href="./Assets/python-cheatsheets.pdf" target="_blank" style="text-decoration: none;color: black;">
-                            <h3 class="resource-title">Python for Data Science</h3>
-                            <p class="resource-desc">Learn how to use Python for data analysis and visualization</p>
-                        </div>
-                        <a href="./Assets/python-cheatsheets.pdf" target="_blank" class="resource-download">
-                            <i class="fas fa-external-link-alt"></i>
-                        </a></a>
-                    </div>
-                    <div class="resource-item">
-                        <div class="resource-icon">
-                            <i class="fas fa-video"></i>
-                        </div>
-                        <div class="resource-info"><a href="https://youtube.com/playlist?list=PLGs0VKk2DiYw-L-RibttcvK-WBZm8WLEP&si=LQMkV07GaTVXQY8a" target="_blank" style="text-decoration: none;color: black;">
-                            <h3 class="resource-title">Introduction to Arduino</h3>
-                            <p class="resource-desc">Video tutorials for getting started with Arduino</p>
-                        </div>
-                        <a href="./Assets/arduino.pdf" target="_blank" class="resource-download">
-                            <i class="fas fa-play"></i>
-                        </a></a>
-                    </div>
-                    <div class="resource-item">
-                        <div class="resource-icon">
-                            <i class="fas fa-book"></i>
-                        </div>
-                        <div class="resource-info"><a href="./Assets/git-cheat-sheet-education.pdf" target="_blank" style="text-decoration: none;color: black;">
-                            <h3 class="resource-title">Git & GitHub Cheatsheet</h3>
-                            <p class="resource-desc">Quick reference guide for Git commands and GitHub workflows</p>
-                        </div>
-                        <a href="./Assets/git-cheat-sheet-education.pdf" target="_blank" class="resource-download">
-                            <i class="fas fa-download"></i>
-                        </a></a>
-                    </div>
-                    <div class="resource-item">
-                        <div class="resource-icon">
-                            <i class="fas fa-link"></i>
-                        </div>
-                        <div class="resource-info"><a href="https://github.com/sandip2224/Best-Web-Development-Resources" target="_blank" style="text-decoration: none;color: black;">
-                            <h3 class="resource-title">Free Learning Resources Collection</h3>
-                            <p class="resource-desc">Curated list of free online courses, tutorials, and e-books</p>
-                        </div>
-                        <a href="https://github.com/sandip2224/Best-Web-Development-Resources" target="_blank" class="resource-download">
-                            <i class="fas fa-external-link-alt"></i>
-                        </a></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </section>
-
-
-        <!-- Projects Section -->
-        <section class="section" id="projects">
-            <div class="container">
-                <div class="flower7">
-                    <div class="petal-layer7"></div>
-                    <div class="face7">
-                      <div class="eye left-eye">
-                        <div class="pupil"></div>
-                      </div>
-                      <div class="eye right-eye">
-                        <div class="pupil"></div>
-                      </div>
-                      <div class="mouth"></div>
-                    </div>
-                  </div>
-    
-                <div class="ocard4" id="ocard4">
-                   <h2>!!!</h2><br>
-                    <p>"Creativity is thinking up new things. Innovation is doing new things."</p><br>
-                    <p>- Theodore Levitt</p>
-                </div>
-                <section class="hidden">
-                <h2 class="section-title">Projects</h2>
-                <p class="section-subtitle">Turning ideas into impact! 💡🚀 Our project session at TinkerHub NSSCE sparked innovation, collaboration, and creativity.</p>
-                
-            </div>
-            <!-- Slideshow container -->
-        <div class="slideshow-container">
-
-        <div class="mySlides fade">
-        <img src="./Assets/1.png" style="width:100%">
+            <button type="submit" onclick="login('admin')">Login</button>
+            <p class="error" id="admin-error">Invalid username or password</p>
         </div>
-  
-        <div class="mySlides fade">
-        <img src="./Assets/2.png" style="width:100%">
-        </div>
-  
-        <div class="mySlides fade">
-        <img src="./Assets/3.png" style="width:100%">
-        </div>
-        <div class="mySlides fade">
-            <img src="./Assets/4.png" style="width:100%">
-        </div>
-        <div class="mySlides fade">
-            <img src="./Assets/5.png" style="width:100%">
-        </div>
-        <div class="mySlides fade">
-            <img src="./Assets/6.png" style="width:100%">
-            </div>
-            <div class="mySlides fade">
-                <img src="./Assets/7.png" style="width:100%">
-                </div>
-            <div class="mySlides fade">
-                <img src="./Assets/8.png" style="width:100%">
-            </div>   
-            <div class="mySlides fade">
-                <img src="./Assets/9.png" style="width:100%">
-            </div>
-            <div class="mySlides fade">
-                <img src="./Assets/10.png" style="width:100%">
-            </div>
-            <div class="mySlides fade">
-                <img src="./Assets/11.png" style="width:100%">
-            </div>
-            <div class="mySlides fade">
-                <img src="./Assets/12.png" style="width:100%">
-            </div>
-            <div class="mySlides fade">
-                <img src="./Assets/13.png" style="width:100%">
-            </div>
-            <div class="mySlides fade">
-                <img src="./Assets/14.png" style="width:100%">
-            </div>
-            <div class="mySlides fade">
-                <img src="./Assets/15.png" style="width:100%">
-            </div>
-            <div class="mySlides fade">
-                <img src="./Assets/16.png" style="width:100%">
-            </div>
-            <div class="mySlides fade">
-                <img src="./Assets/17.png" style="width:100%">
-            </div>
-            <div class="mySlides fade">
-                <img src="./Assets/18.png" style="width:100%">
-            </div>
-            <div class="mySlides fade">
-                <img src="./Assets/19.png" style="width:100%">
-            </div>
-            <div class="mySlides fade">
-                <img src="./Assets/20.png" style="width:100%">
-            </div>
-            <div class="mySlides fade">
-                <img src="./Assets/21.png" style="width:100%">
-            </div>
-            <div class="mySlides fade">
-                <img src="./Assets/22.png" style="width:100%">
-            </div>
-            <div class="mySlides fade">
-                <img src="./Assets/23.png" style="width:100%">
-            </div>
-            <div class="mySlides fade">
-                <img src="./Assets/24.png" style="width:100%">
-            </div>
-            <div class="mySlides fade">
-                <img src="./Assets/25.png" style="width:100%">
-            </div>
-            <div class="mySlides fade">
-                <img src="./Assets/26.png" style="width:100%">
-            </div>
-            <div class="mySlides fade">
-                <img src="./Assets/27.png" style="width:100%">
-            </div>
-            <div class="mySlides fade">
-                <img src="./Assets/28.png" style="width:100%">
-            </div>
-            <div class="mySlides fade">
-                <img src="./Assets/29.png" style="width:100%">
-            </div>
-            <div class="mySlides fade">
-                <img src="./Assets/30.png" style="width:100%">
-            </div>
-            <div class="mySlides fade">
-                <img src="./Assets/31.png" style="width:100%">
-            </div>
-            <div class="mySlides fade">
-                <img src="./Assets/32.png" style="width:100%">
-            </div>
-            <div class="mySlides fade">
-                <img src="./Assets/33.png" style="width:100%">
-            </div>
-            <div class="mySlides fade">
-                <img src="./Assets/34.png" style="width:100%">
-            </div>
-            <div class="mySlides fade">
-                <img src="./Assets/35.png" style="width:100%">
-            </div>
+    </div>
 
-  
-        <!-- Next and previous buttons -->
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-        </div>
-        <br>
-    </section>
-</section>
-
-        <script>
-            let slideIndex = 1;
-            showSlides(slideIndex);
-
-            // Next/previous controls
-            function plusSlides(n) {
-            showSlides(slideIndex += n);
-            }
-
-            // Thumbnail image controls
-            function currentSlide(n) {
-            showSlides(slideIndex = n);
-            }
-
-            function showSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("mySlides");
-            let dots = document.getElementsByClassName("dot");
-            if (n > slides.length) {slideIndex = 1}
-            if (n < 1) {slideIndex = slides.length}
-            for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex-1].style.display = "block";
-            dots[slideIndex-1].className += " active";
-            } 
-        </script>
-
-        <!-- Team Section -->
-        <section class="section" id="team">
-            <div class="container">
-                <div class="flower6">
-                    <div class="petal-layer6"></div>
-                    <div class="face6">
-                      <div class="eye left-eye">
-                        <div class="pupil"></div>
-                      </div>
-                      <div class="eye right-eye">
-                        <div class="pupil"></div>
-                      </div>
-                      <div class="mouth"></div>
-                    </div>
-                  </div>
-    
-                <div class="ocard3" id="ocard3">
-                   <h2>!!!</h2><br>
-                    <p>Leadership is not something you do to people. It's something you do with people. &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-Ken Blanchard</p>
-                </div>
-                <section class="hidden">
-                <h2 class="section-title">Our Team</h2>
-                <p class="section-subtitle">Meet the minds behind the mission! 🧠✨ The driving force of TinkerHub NSSCE — our passionate and unstoppable core team.</p>
-                <br>
-                <div class="team-container">
-                    <div class="team-member">
-                        <div class="member-image">
-                            <img src="./Assets/Campus lead.jpg" alt="Team Member">
-                        </div>
-                        <h3>Vishnu M</h3>
-                        <p>CAMPUS LEAD</p>
-                        <div class="social-links">
-                            <a href="https://www.linkedin.com/in/vishnu-harisree-531b8a25a/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="https://github.com/vishnu-hari-sree" target="_blank"><i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                    <div class="team-member">
-                        <div class="member-image">
-                            <img src="./Assets/campus co-lead 1.jpg" alt="Team Member">
-                        </div>
-                        <h3>Abhishek Arunkumar</h3>
-                        <p>CAMPUS CO-LEAD</p>
-                        <div class="social-links">
-                            <a href="https://www.linkedin.com/in/abhishekarunkumar?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                            <a href=""><i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                    <div class="team-member">
-                        <div class="member-image">
-                            <img src="./Assets/colead2.jpg" alt="Team Member">
-                        </div>
-                        <h3>Ashish P S</h3>
-                        <p>CAMPUS CO-LEAD</p>
-                        <div class="social-links">
-                            <a href="https://www.linkedin.com/in/ashish-p-s-b32095211?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                    <div class="team-member">
-                        <div class="member-image">
-                            <img src="./Assets/wit.jpg" alt="Team Member">
-                        </div>
-                        <h3>Rayhana S</h3>
-                        <p>WOMEN IN TECH LEAD</p>
-                        <div class="social-links">
-                            <a href="https://www.linkedin.com/in/rayhana-s-45b90926b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                    <div class="team-member" style="content-visibility: hidden;">
-                        <div class="member-image"style="content-visibility: hidden;">
-                            <img src="./Assets/otr.jpg" alt="Team Member">
-                        </div>
-                        <h3>Angelin Anto</h3>
-                        <p>OUTREACH LEAD</p>
-                        <div class="social-links">
-                            <a href="https://www.linkedin.com/in/vishnu-harisree-531b8a25a/"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                    <div class="team-member" >
-                        <div class="member-image">
-                            <div class="team-member" >
-                                <div class="member-image">
-                                    <img src="./Assets/otr.jpg" alt="Team Member">
-                                </div>
-                                <h3>Angelin Anto</h3>
-                                <p>OUTREACH LEAD</p>
-                                <div class="social-links">
-                                    <a href="https://www.linkedin.com/in/vishnu-harisree-531b8a25a/"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="#"><i class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <h3>Angelin Anto</h3>
-                        <p>OUTREACH LEAD</p>
-                        <div class="social-links">
-                            <a href="https://www.linkedin.com/in/vishnu-harisree-531b8a25a/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                    <h1 style="font-size: 50px;padding-left: 40px;">+298 Active Members</h1>
-                </div>
-            </div>
-        </section>
-    </section>
-
-
-        <!-- Forum Section -->
-        <section class="section" id="forum">
-            <div class="container">
-                    <div class="flower8">
-                        <div class="petal-layer8"></div>
-                        <div class="face8">
-                          <div class="eye left-eye">
-                            <div class="pupil"></div>
-                          </div>
-                          <div class="eye right-eye">
-                            <div class="pupil"></div>
-                          </div>
-                          <div class="mouth"></div>
-                        </div>
-                      </div>
-        
-                    <div class="ocard5" id="ocard5">
-                       <h4>!!!</h4><br>
-                        <p>"We are Stronger when we listen, and smarter when we share."</p><br>
-                        <p>- Rania Al-Abdullah</p>
-                    </div>
-                    <section class="hidden">
-                <h2 class="section-title">Community Forum</h2>
-                <p class="section-subtitle">Join discussions, ask questions, and share your knowledge with fellow community members</p>
-                <div class="forum">
-                    <div class="forum-post">
-                        <div class="post-header">
-                            <span class="post-author">Swetha P</span>
-                            <span class="post-time">2 days ago</span>
-                        </div>
-                        <div class="post-content">
-                            <p>Has anyone worked with TensorFlow for image recognition? I'm working on a project and could use some guidance on model training.</p>
-                        </div>
-                    </div>
-                    <div class="forum-post">
-                        <div class="post-header">
-                            <span class="post-author">Deekshith Sharma</span>
-                            <span class="post-time">Yesterday</span>
-                        </div>
-                        <div class="post-content">
-                            <p>I'm planning to organize a study group for the upcoming AWS certification exam. Anyone interested in joining? We can meet twice a week online.</p>
-                        </div>
-                    </div>
-                    <div class="forum-post">
-                        <div class="post-header">
-                            <span class="post-author">Arjun krishna</span>
-                            <span class="post-time">2 hours ago</span>
-                        </div>
-                        <div class="post-content">
-                            <p>Just completed the React course from the resources section. It's fantastic! Highly recommend it to anyone interested in front-end development.</p>
-                        </div>
-                        <br>
-                        <div id="forumMessages"></div>
-                        <div id="forumContainer">
-                            <textarea id="forumInput" placeholder="Write your message..."></textarea>
-                            <button onclick="postForumMessage()">Post</button>
-                            
-                          </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </section>
-    
-
-    <!-- About Section -->
-    <section class="section" id="about">
-        <div class="container">
-            <div class="flower6">
-                <div class="petal-layer6"></div>
-                <div class="face6">
-                  <div class="eye left-eye">
-                    <div class="pupil"></div>
-                  </div>
-                  <div class="eye right-eye">
-                    <div class="pupil"></div>
-                  </div>
-                  <div class="mouth"></div>
-                </div>
-              </div>
-
-            
-            <section class="hidden">
-            <h2 class="section-title">About Us</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Empowering Students Through Technology</h3>
-                    <p>TinkerHub NSSCE is a campus community of NSS College of Engineering, Palakkad, powered by TinkerHub Foundation, a non-profit organization building a sustainable ecosystem for students to learn and grow in technology.</p>
-                    <p>Our mission is to promote peer learning, hands-on skills development, and innovation among engineering students. We organize workshops, hackathons, tech talks, and community projects to foster a culture of learning and building together.</p>
-                    <p>With a focus on emerging technologies like AI, Machine Learning, Web Development, IoT, and more, we aim to bridge the gap between academic learning and industry requirements, preparing students to be future-ready technologists.</p>
-                </div>
-                <div class="about-image">
-                    <img src="./Assets/cover.png" alt="TinkerHub NSSCE Team">
-                </div>
-            </div>
-        </div>
-    </section>
-</section>
     <script>
+        const users = {
+            student: {
+                'student': 'student123'
+            },
+            admin: {
+                'admin': 'admin123'
+            }
+        };
 
-const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                console.log(entry)
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                } else {
-                    entry.target.classList.remove('show');
-                }
-            });
-        });
-
-        const hiddenElements = document.querySelectorAll('.hidden');
-        hiddenElements.forEach((el) => observer.observe(el));
-
-        
-        function postForumMessage() {
-        const message = document.getElementById("forumInput").value;
-        if (message.trim()) {
-        const msgElem = document.createElement("p");
-        msgElem.innerText = message;
-        document.getElementById("forumMessages").appendChild(msgElem);
-        document.getElementById("forumInput").value = "";
-    }
-  }
-  
-    function loadForum() {
-    document.getElementById("forumMessages").innerHTML = "<p>No messages yet. Start the conversation!</p>";
-    }
-    </script>
-    <section class="foo" style="margin-bottom: 200px;">
-        
-    </section>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const navLinks = document.querySelector('.nav-links');
-
-            menuToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-            });
-        });
- 
-
-        const pupils = document.querySelectorAll('.pupil');
-        
-        document.addEventListener('mousemove', (e) => {
-          const x = e.clientX;
-          const y = e.clientY;
-        
-          pupils.forEach(pupil => {
-            const rect = pupil.getBoundingClientRect();
-            const pupilX = rect.left + rect.width / 2;
-            const pupilY = rect.top + rect.height / 2;
-        
-            const angle = Math.atan2(y - pupilY, x - pupilX);
-            const moveX = Math.cos(angle) * 10;
-            const moveY = Math.sin(angle) * 10;
-        
-            pupil.style.transform = `translate(${moveX}px, ${moveY}px)`;
-          });
-        });
-
-
-        const card1 = document.getElementById('ocard1');
-        const card2 = document.getElementById('ocard2');
-        const card3 = document.getElementById('ocard3');
-        card1.addEventListener('mouseover', () => {
-        card1.style.animationPlayState = 'paused';
-        });
-        card2.addEventListener('mouseover', () => {
-        card2.style.animationPlayState = 'paused';
-        });
-        card3.addEventListener('mouseover', () => {
-        card3.style.animationPlayState = 'paused';
-        });
-
-        card1.addEventListener('mouseout', () => {
-        card1.style.animationPlayState = 'running';
-        });
-        card2.addEventListener('mouseout', () => {
-        card2.style.animationPlayState = 'running';
-        });
-        card3.addEventListener('mouseout', () => {
-        card3.style.animationPlayState = 'running';
-        });
-
-        
-
-    </script>
-    <footer>
-        <div class="waves">
-            <div class="wave" id="wave1"></div>
-            <div class="wave" id="wave2"></div>
-            <div class="wave" id="wave3"></div>
-            <div class="wave" id="wave4"></div>
-        </div>
-        <ul class="si">
-            <li><a href="https://www.linkedin.com/company/tinkerhubnssce/" target="_blank" style="text-decoration: none;"><i class="ri-linkedin-fill"></i></a></li>
-            <li><a href="https://www.instagram.com/tinkerhub.nssce?igsh=MXEyM3gzNjhuNzBpZw==" target="_blank" style="text-decoration: none;"><i class="ri-instagram-line"></i></a></li>
+        function showForm(type) {
+            document.getElementById('student-form').style.display = type === 'student' ? 'block' : 'none';
+            document.getElementById('admin-form').style.display = type === 'admin' ? 'block' : 'none';
             
-        </ul>
-        <ul class="fmenu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#events">Events</a></li>
-            <li><a href="#resources">Resources</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#team">Team</a></li>
-            <li><a href="#forum">Forum</a></li>
-            <li><a href="#about">About</a></li>
-        </ul>
-        <p>Copyright © TinkerHub NSSCE - All rights reserved</p>
-    </footer>
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+
+            document.getElementById('student-error').style.display = 'none';
+            document.getElementById('admin-error').style.display = 'none';
+        }
+
+        function login(type) {
+            const username = document.getElementById(`${type}-username`).value;
+            const password = document.getElementById(`${type}-password`).value;
+            const errorElement = document.getElementById(`${type}-error`);
+
+            if (users[type][username] && users[type][username] === password) {
+                localStorage.setItem('username', username);
+                window.location.href = 'home.html';
+            } else {
+                errorElement.style.display = 'block';
+            }
+        }
+    </script>
 </body>
 </html>

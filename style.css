@@ -32,7 +32,7 @@
             opacity: 0;
             filter: blur(3px);
             transform: translateY(-10%);
-            transition: all 1.2s;
+            transition: all 1.7s;
         }
         .show {
             opacity: 1;
@@ -130,7 +130,7 @@
             background: orange;
             color: white;
             text-align: center;
-            padding: 180px 0 80px;
+            padding: 180px 0 100px;
             border: 1px solid black;
             border-bottom: none;
         
@@ -192,7 +192,8 @@
         }
         
         .ocard1 {
-            width: 250px;
+            width: 300px;
+            height: 190px;
             position: absolute;
             top: 290px;
             left: 10px;
@@ -220,7 +221,7 @@
             height: 200px;
             position: absolute;
             top: 290px;
-            right:20px;
+            right:10px;
             background: white;
             border: 2px solid #333;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
@@ -236,8 +237,8 @@
             width: 300px;
             height: 300px;
             position: absolute;
-            top: 4125px;
-            left:80px;
+            top: 4090px;
+            left:65px;
             background: white;
             border: 2px solid #333;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
@@ -247,13 +248,13 @@
             padding: 20px;
             transform-origin: top center;
             animation: swing 2s infinite ease-in-out;
-            z-index: -2;
+            z-index: 1;
         }
         .ocard4 {
             width: 300px;
-            height: 300px;
+            height: 250px;
             position: absolute;
-            top: 3380px;
+            top: 3370px;
             right:80px;
             background: white;
             border: 2px solid #333;
@@ -270,7 +271,7 @@
             width: 300px;
             height: 250px;
             position: absolute;
-            top: 5200px;
+            top: 5125px;
             right:80px;
             background: white;
             border: 2px solid #333;
@@ -285,7 +286,7 @@
         }
         .ocard6{
             width: 300px;
-            height: 300px;
+            height: 250px;
             position: absolute;
             top: 2550px;
             left:80px;
@@ -303,9 +304,9 @@
 
         .ocard7{
             width: 300px;
-            height: 300px;
+            height: 260px;
             position: absolute;
-            top: 1500px;
+            top: 1520px;
             right:80px;
             background: white;
             border: 2px solid #333;
@@ -321,7 +322,7 @@
 
         .ocard3 p, .ocard4 p, .ocard5 p, .ocard6 p, .ocard7 p{
             display: inline;
-            font-size: 24px;
+            font-size: 22px;
             font-family: Copperplate, Papyrus, fantasy;
             font-weight: bolder;
         }
@@ -338,7 +339,7 @@
             height: 70px;
             position: absolute;
             top: 230px;
-            left: 90px;
+            left: 110px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -472,13 +473,13 @@
             width: 70px;
             height: 70px;
             position: absolute;
-            top: 4080px;
-            left: 180px;
+            top: 4050px;
+            left: 170px;
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 10px;
-            z-index: 1;
+            z-index: 3;
           }
           
           /* Rotating body part */
@@ -510,7 +511,7 @@
             width: 70px;
             height: 70px;
             position: absolute;
-            top: 3350px;
+            top: 3330px;
             right: 190px;
             display: flex;
             justify-content: center;
@@ -548,7 +549,7 @@
             width: 70px;
             height: 70px;
             position: absolute;
-            top: 5150px;
+            top: 5080px;
             right: 190px;
             display: flex;
             justify-content: center;
@@ -1207,6 +1208,10 @@
                 }
 
         }
+        #last h2:nth-child(1) {
+            color: black;
+            text-shadow: -2px 2px 1 px rgb;
+        }
 
 
         /*Responssive Design*/
@@ -1221,6 +1226,7 @@
 
             .ocard1{
                 width: 150px;
+                height: 155px;
                 top: 10px;
                 left: 0px;
 
@@ -1242,13 +1248,20 @@
             .ocard7 h2, .ocard6 h4, .ocard3 h2, .ocard5 h4, .ocard4 h2{
                 display: none;
             }
-            .ocard7, .ocard6, .ocard3, .ocard5, .ocard4 {
+             .ocard6, .ocard3, .ocard5, .ocard4 {
                 position: relative;
                 width: 190px;
                 height: 200px;
                 top: -50px;
-                left: 110px;
+                left: 100px;
 
+            }
+            .ocard7{
+                position: relative;
+                width: 190px;
+                height: 220px;
+                top: -50px;
+                left: 100px;
             }
 
             .flower7, .flower8, .flower6,.flower5,.flower4,.flower3,.flower9,.flower10, .flower1, .flower2{
