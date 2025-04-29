@@ -112,13 +112,36 @@ This section helps new users understand what TinkerHub is, why it exists, and ho
 
 ---
 
-## 👨‍💻 Contact & Credits
+📌 Use Cases
 
-🔗 Live Website: TinkerHub NSSCE Campus Community Website
-👨‍💻 Developer: Arjyun
-📧 Email: arjunk.karjun.arjunk@gmail.com
-🏫 Institution: NSS College of Engineering, Palakkad
-🚀 Project: Final Project for WebFusion 2025 – TinkerHub NSSCE
+    A student checking for upcoming events or joining TinkerHub activities
+
+    A faculty member or admin showcasing successful projects to new students
+
+    Visitors and recruiters exploring the tech culture at NSSCE
+
+---
+
+👨‍💻 Developed By
+
+Arjun
+B.Tech CSE Student | TinkerHub NSSCE
+Final Project for TinkerHub WebFusion
+
+
+---
+
+🚀 Future Scope
+
+Although this is currently a static frontend project, it has been designed with scalability in mind. Future enhancements may include:
+
+    🔄 Backend integration 
+
+    📝 CMS for event and project management
+
+    🧠 AI-powered recommendation of resources/events based on user interest
+
+    📊 Analytics dashboard for admins
 
 ---
 
