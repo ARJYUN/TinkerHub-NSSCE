@@ -1214,42 +1214,44 @@
             .hero h1 {
                 font-size: 2rem;
             }
-            .face1,.face2{
-                width: 70px;
-            }
             
-            .flower1{
-                position: relative;
-                top: -130px;
-                left: 180px;
-                margin-bottom: 40px;
-            }
-            .flower2{
-                top:600px;
-                right: 20px;
-            }
-            .ocard1{
-                width: 190px;
-                top: 110px;
-                left: 130px;
-            }
             .ocard1 p{
-                font-size: 17px;
+                font-size: 15px;
             }
-            
-            .ocard2{
-                width: 190px;
-                height: 140px;
-                top: 670px;
-                right: -20px;
+
+            .ocard1{
+                width: 150px;
+                top: 10px;
+                left: 0px;
+
             }
+
             .ocard2 img{
                 width: 150px;
             }
-            .ocard4,.ocard5,.ocard3,.ocard6,.ocard7{
+            .ocard2{
+                width: 190px;
+                height: 150px;
+                top: 530px;
+                right: 0;
+            }
+
+            .ocard7 p, .ocard6 p, .ocard3 p, .ocard5  p, .ocard4 p{
+                font-size: 13px;
+            }
+            .ocard7 h2, .ocard6 h4, .ocard3 h2, .ocard5 h4, .ocard4 h2{
                 display: none;
             }
-            .flower7, .flower8, .flower6,.flower5,.flower4,.flower3,.flower9,.flower10{
+            .ocard7, .ocard6, .ocard3, .ocard5, .ocard4 {
+                position: relative;
+                width: 190px;
+                height: 200px;
+                top: -50px;
+                left: 110px;
+
+            }
+
+            .flower7, .flower8, .flower6,.flower5,.flower4,.flower3,.flower9,.flower10, .flower1, .flower2{
                 display: none;
             }
 
