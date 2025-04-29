@@ -107,16 +107,21 @@
         }
 
         .auth-buttons a {
-            background-color: var(--primary);
+            background-color: rgb(252, 31, 31);
             color: white;
             padding: 8px 15px;
             border-radius: 5px;
             text-decoration: none;
+            cursor: pointer;
             transition: background-color 0.3s;
+
         }
 
         .auth-buttons a:hover {
-            background-color: var(--secondary);
+            background: white;
+            color: red;
+            border: 1px solid red;
+            transform: translateY(-10px);
 
         }
 
@@ -1228,7 +1233,7 @@
                 width: 150px;
                 height: 155px;
                 top: 10px;
-                left: 0px;
+                left: -10px;
 
             }
 
@@ -1238,8 +1243,8 @@
             .ocard2{
                 width: 190px;
                 height: 150px;
-                top: 530px;
-                right: 0;
+                top: 600px;
+                right: -10px;
             }
 
             .ocard7 p, .ocard6 p, .ocard3 p, .ocard5  p, .ocard4 p{
@@ -1274,6 +1279,16 @@
 
             .menu-toggle {
                 display: block;
+                position: absolute;
+                Right: 17px;
+            }
+            .auth-buttons{
+                position: absolute;
+                right:55px;
+            }
+            #username{
+                position: absolute;
+                left: 200px;
             }
 
             .nav-links {
@@ -1322,5 +1337,14 @@
                 flex: none;
                 width: 100%;
             }
-           
+            #hid{
+                opacity: 0;
+            }
+           .hero a{
+            margin-top: 30px;
+            margin-bottom: 30px;
+           }
+           .hero p{
+            padding-top: 20px;
+           }
         }
