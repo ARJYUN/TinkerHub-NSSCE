@@ -17,12 +17,16 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: url(./Assets/loginbg.jpg) center/cover;
             overflow: hidden;
+            line-height: 1.6;
+            background-size: 40px 40px;
+            background-image:
+                    linear-gradient(to right, rgb(228, 226, 226) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgb(228, 226, 226) 1px, transparent 1px);
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.95);
+            background:#ffbf00;
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
@@ -54,8 +58,8 @@
         }
 
         .tabs button.active {
-            color: #6b48ff;
-            border-bottom: 2px solid #6b48ff;
+            color: #008a33;
+            border-bottom: 2px solid #008a33;
         }
 
         .form-group {
@@ -74,8 +78,8 @@
 
         .form-group input:focus {
             outline: none;
-            border-color: #6b48ff;
-            box-shadow: 0 0 5px rgba(107, 72, 255, 0.3);
+            border-color: #008a33;
+            box-shadow: 0 0 5px 008a33;
         }
 
         .form-group label {
@@ -91,7 +95,7 @@
         .form-group input:not(:placeholder-shown) + label {
             top: -10px;
             font-size: 12px;
-            color: #6b48ff;
+            color: #008a33;
             background: #fff;
             padding: 0 5px;
         }
@@ -99,7 +103,7 @@
         button[type="submit"] {
             width: 100%;
             padding: 12px;
-            background: #6b48ff;
+            background: #008a33;
             border: none;
             border-radius: 8px;
             color: white;
@@ -109,7 +113,7 @@
         }
 
         button[type="submit"]:hover {
-            background: #5a3de6;
+            background: #008a33;
         }
 
         .error {
@@ -176,14 +180,11 @@
         const users = {
             student: {
                 'Arjun': 'student123',
-                'Swetha': 'student123',
-                'Adarsh': 'student123',
-                'Abhinav': 'student123'
+                'Swetha': 'student123'
             },
             admin: {
                 'Syam': 'admin123',
-                'Devi': 'admin123',
-                'Arun': 'admin123'
+                'Devi': 'admin123'
             }
         };
 
