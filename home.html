@@ -29,7 +29,7 @@
                 <li><a href="#forum">Forum</a></li>
                 <li><a href="#about">About</a></li>
             </ul>
-            <h4><span id="hid">Welcome </span><span id="username"></span></h4>
+            <h4><span id="hid">Hi </span><span id="username"></span></h4>
             <div class="auth-buttons">
                 <a id="logoutBtn" onclick="logout()">Log out</a>
             </div>
@@ -699,7 +699,7 @@ const observer = new IntersectionObserver((entries) => {
         function postForumMessage() {
         const message = document.getElementById("forumInput").value;
         if (message.trim()) {
-        const msgElem = document.createElement("p");
+        const msgElem = document.createElement('p');
         msgElem.innerText = message;
         document.getElementById("forumMessages").appendChild(msgElem);
         document.getElementById("forumInput").value = "";
