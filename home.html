@@ -29,8 +29,9 @@
                 <li><a href="#forum">Forum</a></li>
                 <li><a href="#about">About</a></li>
             </ul>
+            <h4>Welcome, <span id="username"></span></h4>
             <div class="auth-buttons">
-                <a href="#" id="loginBtn">Login</a>
+                <a href="#" id="loginBtn" onclick="logout()">Log out</a>
             </div>
         </div>
     </nav>
@@ -713,6 +714,20 @@ const observer = new IntersectionObserver((entries) => {
         
     </section>
     <script>
+        /*For Login name and logout button*/
+        const username = localStorage.getItem('username');
+        if (username) {
+            document.getElementById('username').textContent = username;
+        } else {
+            window.location.href = 'index.html';
+        }
+        function logout() {
+            localStorage.removeItem('username');
+            window.location.href = 'index.html';
+        }
+
+
+        /*For menu button(Phone)*/
         document.addEventListener('DOMContentLoaded', function() {
             const menuToggle = document.querySelector('.menu-toggle');
             const navLinks = document.querySelector('.nav-links');
@@ -722,7 +737,7 @@ const observer = new IntersectionObserver((entries) => {
             });
         });
  
-
+        /*For flower eyes*/
         const pupils = document.querySelectorAll('.pupil');
         
         document.addEventListener('mousemove', (e) => {
@@ -742,31 +757,6 @@ const observer = new IntersectionObserver((entries) => {
           });
         });
 
-
-        const card1 = document.getElementById('ocard1');
-        const card2 = document.getElementById('ocard2');
-        const card3 = document.getElementById('ocard3');
-        card1.addEventListener('mouseover', () => {
-        card1.style.animationPlayState = 'paused';
-        });
-        card2.addEventListener('mouseover', () => {
-        card2.style.animationPlayState = 'paused';
-        });
-        card3.addEventListener('mouseover', () => {
-        card3.style.animationPlayState = 'paused';
-        });
-
-        card1.addEventListener('mouseout', () => {
-        card1.style.animationPlayState = 'running';
-        });
-        card2.addEventListener('mouseout', () => {
-        card2.style.animationPlayState = 'running';
-        });
-        card3.addEventListener('mouseout', () => {
-        card3.style.animationPlayState = 'running';
-        });
-
-        
 
     </script>
     <footer>
