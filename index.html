@@ -122,10 +122,140 @@
             margin-top: 10px;
             display: none;
         }
+        .flower1 {
+            width: 70px;
+            height: 70px;
+            position: absolute;
+            top: -50px;
+            right: 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+            z-index: 2;
+          }
+          
+          /* Rotating body part */
+          .petal-layer1 {
+            width: 150px;
+            height: 150px;
+            background: pink;
+            border-radius: 50%;
+            border-radius: 40% 60% 60% 40% / 50% 50% 50% 50%;
+            position: absolute;
+            animation: spin 2s linear infinite;
+            z-index: 0;
+          }
+          
+          /* Static face */
+          .face1 {
+            width: 100px;
+            height: 100px;
+            background: pink;
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+          }
+          
+          .eye {
+            width: 25px;
+            height: 25px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          
+          .left-eye {
+            left: -6px;
+          }
+          
+          .right-eye {
+            right: -6px;
+          }
+          
+          .pupil {
+            width: 20px;
+            height: 20px;
+            background: black;
+            border-radius: 50%;
+            position: relative;
+            transition: transform 0.1s;
+          }
+          
+          /* Smile */
 
-        
+          .mouth {
+            width: 40px;
+            height: 20px;
+            border: 3px solid black;
+            border-top: none;
+            border-radius: 0 0 50px 50px;
+            position: absolute;
+            top: 75px;
+            left: 50%;
+            transform: translateX(-50%);
+          }
+          
+          @keyframes spin {
+            from {
+              transform: rotate(0deg);
+            }
+            to {
+              transform: rotate(360deg);
+            }
+          }
+          
+          /* Dynamic pupil movement */
+          .eye::before {
+            transform: translate(var(--pupil-x, 0px), var(--pupil-y, 0px));
+          }
 
-        
+          .flower2 {
+            width: 70px;
+            height: 70px;
+            position: absolute;
+            bottom: -50px;
+            left: -20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+            z-index: 2;
+          }
+          
+          /* Rotating body part */
+          .petal-layer2 {
+            width: 150px;
+            height: 150px;
+            background: rgb(232, 232, 8);
+            border-radius: 50%;
+            border-radius: 40% 60% 60% 40% / 50% 50% 50% 50%;
+            position: absolute;
+            animation: spin 2s linear infinite;
+            z-index: 0;
+          }
+          
+          /* Static face */
+          .face2 {
+            width: 100px;
+            height: 100px;
+            background: rgb(232, 232, 8);
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+          }
 
         @keyframes float {
             0% {
@@ -143,6 +273,30 @@
 <body>
 
     <div class="container">
+        <div class="flower1">
+            <div class="petal-layer1"></div>
+            <div class="face1">
+              <div class="eye left-eye">
+                <div class="pupil"></div>
+              </div>
+              <div class="eye right-eye">
+                <div class="pupil"></div>
+              </div>
+              <div class="mouth"></div>
+            </div>
+          </div>
+          <div class="flower2">
+            <div class="petal-layer2"></div>
+            <div class="face2">
+              <div class="eye left-eye">
+                <div class="pupil"></div>
+              </div>
+              <div class="eye right-eye">
+                <div class="pupil"></div>
+              </div>
+              <div class="mouth"></div>
+            </div>
+          </div>
         <h2>Login</h2>
         <div class="tabs">
             <button class="tab active" onclick="showForm('student')">Student Login</button>
@@ -211,6 +365,24 @@
                 errorElement.style.display = 'block';
             }
         }
+        const pupils = document.querySelectorAll('.pupil');
+        
+        document.addEventListener('mousemove', (e) => {
+          const x = e.clientX;
+          const y = e.clientY;
+        
+          pupils.forEach(pupil => {
+            const rect = pupil.getBoundingClientRect();
+            const pupilX = rect.left + rect.width / 2;
+            const pupilY = rect.top + rect.height / 2;
+        
+            const angle = Math.atan2(y - pupilY, x - pupilX);
+            const moveX = Math.cos(angle) * 10;
+            const moveY = Math.sin(angle) * 10;
+        
+            pupil.style.transform = `translate(${moveX}px, ${moveY}px)`;
+          });
+        });
     </script>
 </body>
 </html>
