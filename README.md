@@ -124,9 +124,9 @@ This section helps new users understand what TinkerHub is, why it exists, and ho
 
 👨‍💻 Developed By
 
-Arjun K 
-B.Tech CSE Student | NSSCE
-Final Project for TinkerHub WebFusion
+Arjun K <br>
+B.Tech CSE Student | NSSCE <br>
+Final Project for TinkerHub WebFusion <br>
 
 
 ---
